@@ -4,7 +4,7 @@ import { RemoteAuthentication } from './remote-authentication'
 
 describe('RemoteAuthentication', () => {
   test('Should call HttpPostClient with correct URL', async () => {
-    class HttpPostClientSpy implements HasdttpPostClient {
+    class HttpPostClientSpy implements HttpPostClient {
       url?: string
       async post (url: string): Promise<void> {
         this.url = url

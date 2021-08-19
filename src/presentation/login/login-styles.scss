@@ -39,22 +39,7 @@ button {
   flex-direction: column;
   min-height: 100vh;
   justify-content: space-between;
-  .header{
-    background-color: $primary;
-    display: flex;
-    flex-direction: column;
-    border-top: 40px solid $primaryDark;
-    align-items: center;
-    padding: 20px;
-    img{
-      margin-bottom: 20px;
-    }
-    h1{
-      color: $white;
-      font-size: 20px;
-    }
-  }
-
+  
   .form{
     display: flex;
     flex-direction: column;

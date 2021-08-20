@@ -28,6 +28,13 @@
     }
     button{
       margin-top: 24px;
+      &:disabled{
+        background-color: $disabledBackground;
+        color: $disabledColor;
+        &:hover{
+          opacity: 1;
+        }
+      }
     }
     .link{
       text-align: center;

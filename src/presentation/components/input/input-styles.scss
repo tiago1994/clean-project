@@ -1,11 +1,20 @@
 @import "../../styles/colors.scss";
 
 .inputDefault {
-  border: 1px solid $primaryLight;
-  line-height: 40px;
-  border-radius: 4px;
-  padding: 0px 8px;
-  &:focus{
-    outline-color: $primaryLight;
+  input{
+    border: 1px solid $primaryLight;
+    line-height: 40px;
+    border-radius: 4px;
+    padding: 0px 8px;
+    width: 100%;
+    &:focus{
+      outline-color: $primaryLight;
+    }
+  }
+  div{
+    text-align: right;
+    font-size: 12px;
+    font-style: italic;
+    color: red;
   }
 }

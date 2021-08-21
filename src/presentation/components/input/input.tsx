@@ -17,9 +17,7 @@ const Input: React.FC<Props> = (props: Props) => {
   return (
     <div className={Styles.inputDefault}>
       <input data-testid={props.name} {...props} onChange={handleChange} />
-      {error && (
-        <div data-testid={`${props.name}-status`} title={error}>{error}</div>
-      )}
+      <div data-testid={`${props.name}-status`} title={error}>{error}</div>
     </div>
   )
 }

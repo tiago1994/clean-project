@@ -8,6 +8,6 @@ export class EmailValidation implements FieldValidation {
     // eslint-disable-next-line no-useless-escape
     const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 
-    return emailRegex.test(value) ? null : new InvalidFieldError(value)
+    return (!value || emailRegex.test(value)) ? null : new InvalidFieldError(value)
   }
 }

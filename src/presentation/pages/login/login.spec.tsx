@@ -1,5 +1,5 @@
 import React from 'react'
-import Login from './login'
+import { Login } from '@/presentation/pages'
 import faker from 'faker'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'

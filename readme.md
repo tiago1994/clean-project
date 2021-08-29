@@ -1,1 +1,2 @@
 [![Build Status](https://app.travis-ci.com/tiago1994/clean-project.svg?branch=master)](https://app.travis-ci.com/tiago1994/clean-project)
+[![Coverage Status](https://coveralls.io/repos/github/tiago1994/clean-project/badge.svg?branch=master)](https://coveralls.io/github/tiago1994/clean-project?branch=master)

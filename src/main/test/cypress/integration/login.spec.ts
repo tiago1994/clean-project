@@ -64,7 +64,8 @@ describe('Login', () => {
       url: /login/,
       status: 200,
       response: {
-        accessToken: faker.datatype.uuid()
+        accessToken: faker.datatype.uuid(),
+        name: faker.name.findName()
       }
     })
     cy.get('[data-testid="email"]').type(faker.internet.email())
@@ -73,7 +74,7 @@ describe('Login', () => {
     cy.get('[data-testid="spinner"]').should('not.exist')
     cy.get('[data-testid="main-error"]').should('not.exist')
     cy.url().should('eq', `${baseUrl}/`)
-    cy.window().then(window => assert.isOk(window.localStorage.getItem('accessToken')))
+    cy.window().then(window => assert.isOk(window.localStorage.getItem('account')))
   })
 
   it('Shuld prevent multiple submits', () => {

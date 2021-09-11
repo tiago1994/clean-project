@@ -85,7 +85,8 @@ describe('Singup', () => {
       url: /signup/,
       status: 200,
       response: {
-        accessToken: faker.datatype.uuid()
+        accessToken: faker.datatype.uuid(),
+        name: faker.name.findName()
       }
     })
     const password = faker.random.alphaNumeric(10)
@@ -97,7 +98,7 @@ describe('Singup', () => {
     cy.get('[data-testid="spinner"]').should('not.exist')
     cy.get('[data-testid="main-error"]').should('not.exist')
     cy.url().should('eq', `${baseUrl}/`)
-    cy.window().then(window => assert.isOk(window.localStorage.getItem('accessToken')))
+    cy.window().then(window => assert.isOk(window.localStorage.getItem('account')))
   })
 
   it('Shuld prevent multiple submits', () => {
@@ -106,7 +107,8 @@ describe('Singup', () => {
       url: /signup/,
       status: 200,
       response: {
-        accessToken: faker.datatype.uuid()
+        accessToken: faker.datatype.uuid(),
+        name: faker.name.findName()
       }
     }).as('request')
     const password = faker.random.alphaNumeric(10)

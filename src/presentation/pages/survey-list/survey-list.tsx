@@ -1,30 +1,42 @@
-import { Footer, Header, Icon, IconName } from '@/presentation/components'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Styles from './survey-list.styles.scss'
+import { Footer, Header } from '@/presentation/components'
+import { SurveyItem, SurveyItemEmpty } from '@/presentation/pages/survey-list/components'
+import { LoadSurveyList } from '@/domain/usecases'
+import { SurveyModel } from '@/domain/models'
 
-const SurveyList: React.FC = () => {
+type Props = {
+  loadSurveyList: LoadSurveyList
+}
+
+const SurveyList: React.FC<Props> = ({ loadSurveyList }: Props) => {
+  const [state, setState] = useState({
+    surveys: [] as SurveyModel[],
+    error: ''
+  })
+
+  useEffect(() => {
+    loadSurveyList.loadAll()
+      .then(surveys => setState({ ...state, surveys }))
+      .catch(error => setState({ ...state, error: error.message }))
+  }, [])
+
   return (
     <div className={Styles.surveyListWrap}>
       <Header />
       <div className={Styles.contentWrap}>
         <h2>Enquetes</h2>
-        <ul>
-          <li>
-            <div className={Styles.surveyContent}>
-              <Icon iconName={IconName.thumbUp} className={Styles.iconWrap} />
-              <time>
-                <span className={Styles.day}>22</span>
-                <span className={Styles.month}>10</span>
-                <span className={Styles.year}>2021</span>
-              </time>
-              <p>Qual é o seu framework favorito?</p>
-            </div>
-            <footer>Ver Resultado</footer>
-          </li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+        {state.error
+          ? <div>
+            <span data-testid="error">{state.error}</span>
+            <button>Recarregar</button>
+          </div>
+          : <ul data-testid="survey-list">
+            {state.surveys.length
+              ? state.surveys.map((survey: SurveyModel) => <SurveyItem survey={survey} key={survey.id} />)
+              : <SurveyItemEmpty />}
+          </ul>
+        }
       </div>
       <Footer />
     </div>

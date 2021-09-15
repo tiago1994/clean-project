@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import Styles from './item.styles.scss'
+import Styles from './error.styles.scss'
 import { SurveyContext } from '@/presentation/pages/survey-list/components'
 
 const Error: React.FC = () => {

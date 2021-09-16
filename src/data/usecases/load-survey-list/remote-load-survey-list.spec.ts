@@ -2,7 +2,7 @@ import { RemoteLoadSurveyList } from './remote-load-survey-list'
 import { HttpGetClientSpy, mockRemoteSurveyListModel } from '@/data/test'
 import faker from 'faker'
 import { HttpStatusCode } from '@/data/protocols/http'
-import { UnexpectedError } from '@/domain/errors'
+import { AccessDeniedError, UnexpectedError } from '@/domain/errors'
 
 type SutTypes = {
   sut: RemoteLoadSurveyList
@@ -33,7 +33,7 @@ describe('RemoteLoadSurveyList', () => {
       statusCode: HttpStatusCode.forbidden
     }
     const promise = sut.loadAll()
-    await expect(promise).rejects.toThrow(new UnexpectedError())
+    await expect(promise).rejects.toThrow(new AccessDeniedError())
   })
 
   test('Should throw UnexpectedError if HttpPostClient returns 404', async () => {
